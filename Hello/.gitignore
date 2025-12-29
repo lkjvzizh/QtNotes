@@ -1,0 +1,57 @@
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.obj
+*.lib
+*.dll
+*.so
+*.dylib
+*.a
+
+# Qt-ES
+.qmake.stash
+*.qmlc
+*.jsc
+Makefile*
+*build-*
+
+# Qt generated files
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+release/
+debug/
+GeneratedFiles/
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.aps
+*.sdf
+*.ncb
+*.suo
+*.opensdf
+*.opendsf
+*.pdb
+*.idb
+*.ilk
+*.exp
+ipch/
+x64/
+Debug/
+Release/
+
+# Executables
+*.exe
+*.out
+*.app
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

@@ -1,0 +1,28 @@
+# CMake
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.cmake
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sln.docstates
+x64/
+Debug/
+Release/
+
+# Qt
+*.qm
+*.autosave
+ui_*.h
+moc_*.cpp
+qrc_*.cpp
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
