@@ -15,6 +15,8 @@
 
 #include "BluetoothWindow.h"
 
+#include "FaceTestWindow.h"
+
 int main(int argc, char *argv[])
 {
 
@@ -92,8 +94,12 @@ int main(int argc, char *argv[])
     */
 
     //10.BluetoothWindow
-    BluetoothWindow w;
-    w.show();
+    //BluetoothWindow w;
+    //w.show();
+
+    //11.人脸
+	FaceTestWindow w;
+	w.show();
 
     return app.exec();
 }

@@ -106,6 +106,9 @@
     <ClCompile Include="BluetoothWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FaceTestWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="JellyButton.h">
@@ -172,6 +175,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="BluetoothWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FaceTestWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

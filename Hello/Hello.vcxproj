@@ -68,11 +68,11 @@
     <ClCompile>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)libusb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)libusb;$(SolutionDir)3rdparty\SeetaFace2\include;$(OPENCV_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(ProjectDir)libusb;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libusb-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)libusb;$(SolutionDir)3rdparty\SeetaFace2\lib;$(OPENCV_DIR)\x64\vc16\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libusb-1.0.lib;SeetaFaceDetector.lib;SeetaFaceLandmarker.lib;SeetaFaceRecognizer.lib;opencv_world4100d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -113,6 +113,7 @@
     <ClCompile Include="BluetoothWindow.cpp" />
     <ClCompile Include="BrowserWindow.cpp" />
     <ClCompile Include="CoreBridge.cpp" />
+    <ClCompile Include="FaceTestWindow.cpp" />
     <ClCompile Include="ImageCarousel.cpp" />
     <ClCompile Include="MarqueeLabel.cpp" />
     <ClCompile Include="NetworkHelper.cpp" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiResponse.h" />
+    <QtMoc Include="FaceTestWindow.h" />
     <QtMoc Include="BluetoothWindow.h" />
     <QtMoc Include="BleManager.h" />
     <QtMoc Include="wsClientWindow.h" />
