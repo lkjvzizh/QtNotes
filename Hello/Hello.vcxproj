@@ -72,7 +72,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)libusb;$(SolutionDir)3rdparty\SeetaFace2\lib;$(OPENCV_DIR)\x64\vc16\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libusb-1.0.lib;SeetaFaceDetector.lib;SeetaFaceLandmarker.lib;SeetaFaceRecognizer.lib;opencv_world4100d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libusb-1.0.lib;SeetaFaceDetector_d.lib;SeetaFaceLandmarker_d.lib;SeetaFaceRecognizer_d.lib;opencv_world4100d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
