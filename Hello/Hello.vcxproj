@@ -43,7 +43,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.8.3_msvc2022_64</QtInstall>
-    <QtModules>core;gui;network;widgets;multimedia;multimediawidgets;printsupport;serialport;webchannel;webenginecore;webenginewidgets;texttospeech</QtModules>
+    <QtModules>core;gui;network;widgets;bluetooth;multimedia;multimediawidgets;printsupport;serialport;webchannel;webenginecore;websockets;webenginewidgets;texttospeech</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -68,17 +68,23 @@
     <ClCompile>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)libusb;$(SolutionDir)3rdparty\SeetaFace2\include;$(OPENCV_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)libusb;$(OPENCV_DIR)\include;$(SolutionDir)3rdparty\SeetaFace6\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(ProjectDir)libusb;$(SolutionDir)3rdparty\SeetaFace2\lib;$(OPENCV_DIR)\x64\vc16\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libusb-1.0.lib;SeetaFaceDetector_d.lib;SeetaFaceLandmarker_d.lib;SeetaFaceRecognizer_d.lib;opencv_world4100d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)libusb;$(OPENCV_DIR)\x64\vc16\lib;$(SolutionDir)3rdparty\SeetaFace6\lib;$(SolutionDir)3rdparty\SeetaFace6\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libusb-1.0.lib;opencv_world4100d.lib;SeetaAuthorize_d.lib;SeetaFaceDetector600_d.lib;SeetaFaceLandmarker600_d.lib;SeetaFaceRecognizer610_d.lib;SeetaFaceAntiSpoofingX600_d.lib;SeetaFaceTracking600_d.lib;SeetaPoseEstimation600_d.lib;SeetaQualityAssessor300_d.lib;SeetaAgePredictor600_d.lib;SeetaGenderPredictor600_d.lib;SeetaEyeStateDetector200_d.lib;SeetaMaskDetector200_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\include;$(SolutionDir)3rdparty\SeetaFace6\include;$(ProjectDir)libusb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\x64\vc16\lib;$(SolutionDir)3rdparty\SeetaFace6\lib;$(SolutionDir)3rdparty\SeetaFace6\lib\x64;$(ProjectDir)libusb;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4100.lib;SeetaAuthorize.lib;SeetaFaceDetector600.lib;SeetaFaceLandmarker600.lib;SeetaFaceRecognizer610.lib;SeetaFaceAntiSpoofingX600.lib;SeetaFaceTracking600.lib;SeetaPoseEstimation600.lib;SeetaQualityAssessor300.lib;SeetaAgePredictor600.lib;SeetaGenderPredictor600.lib;SeetaEyeStateDetector200.lib;SeetaMaskDetector200.lib;libusb-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -113,6 +119,7 @@
     <ClCompile Include="BluetoothWindow.cpp" />
     <ClCompile Include="BrowserWindow.cpp" />
     <ClCompile Include="CoreBridge.cpp" />
+    <ClCompile Include="FaceDemoWindow.cpp" />
     <ClCompile Include="FaceTestWindow.cpp" />
     <ClCompile Include="ImageCarousel.cpp" />
     <ClCompile Include="MarqueeLabel.cpp" />
@@ -156,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiResponse.h" />
+    <QtMoc Include="FaceDemoWindow.h" />
     <QtMoc Include="FaceTestWindow.h" />
     <QtMoc Include="BluetoothWindow.h" />
     <QtMoc Include="BleManager.h" />
