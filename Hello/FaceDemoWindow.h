@@ -1,21 +1,21 @@
 ﻿#pragma once
 
-#include <QWidget> // ★ 改为 QWidget
+#include <QWidget>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QTimer>
-#include <QDebug>
-
-// OpenCV
 #include <opencv2/opencv.hpp>
 
-// SeetaFace6 头文件
+// 引入 SeetaFace6 所有模块的头文件
 #include <seeta/FaceDetector.h>
 #include <seeta/FaceLandmarker.h>
 #include <seeta/FaceAntiSpoofing.h>
-#include <seeta/Struct.h>
+#include <seeta/PoseEstimator.h>      // 姿态估计 (摇头)
+#include <seeta/AgePredictor.h>       // 年龄
+#include <seeta/GenderPredictor.h>    // 性别
+#include <seeta/EyeStateDetector.h>   // 眼睛状态
 
-class FaceDemoWindow : public QWidget // ★ 改为 QWidget
+class FaceDemoWindow : public QWidget
 {
 	Q_OBJECT
 
@@ -23,23 +23,31 @@ public:
 	FaceDemoWindow(QWidget* parent = nullptr);
 	~FaceDemoWindow();
 
-private:
-	// --- 界面元素 ---
-	QLabel* m_labelDisplay;   // 显示画面
-	QLabel* m_labelStatus;    // 显示状态文字
-	QVBoxLayout* m_mainLayout; // 主布局
+private slots:
+	void updateFrame(); // 定时刷新画面
 
-	// --- 摄像头与定时器 ---
+private:
+	void setupUI();      // 初始化界面
+	void initSeetaFace(); // 初始化 AI 引擎
+
+private:
+	// UI 控件
+	QLabel* m_labelDisplay;
+	QLabel* m_labelStatus;
+	QVBoxLayout* m_mainLayout;
+
+	// 摄像头与定时器
 	cv::VideoCapture m_cap;
-	QTimer* m_timer = nullptr;
+	QTimer* m_timer;
 
 	// --- SeetaFace 引擎指针 ---
 	seeta::FaceDetector* m_detector = nullptr;
 	seeta::FaceLandmarker* m_landmarker = nullptr;
 	seeta::FaceAntiSpoofing* m_antiSpoofing = nullptr;
 
-	// --- 核心函数 ---
-	void setupUI();         // 布局界面
-	void initSeetaFace();   // 加载模型
-	void updateFrame();     // 刷新每一帧
+	// 新增功能的引擎
+	seeta::PoseEstimator* m_poseEstimator = nullptr;
+	seeta::AgePredictor* m_agePredictor = nullptr;
+	seeta::GenderPredictor* m_genderPredictor = nullptr;
+	seeta::EyeStateDetector* m_eyeStateDetector = nullptr;
 };
